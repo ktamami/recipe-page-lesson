@@ -5,7 +5,7 @@ import View from "./View.js";
 // Parcel2での書き方はPath名の前にurl:を。
 import icons from "url:../../img/icons.svg";
 // iconsはparcelに作られた新しいpathになってる
-import { Fraction } from "fractional";
+import fracty from "fracty";
 
 // viewのパートには、Viewというビルドインのクラスがある。
 // 継承して使えるようにしたいので、viewでは基本クラス形態を取る
@@ -134,7 +134,7 @@ class RecipeView extends View {
             <use href="${icons}#icon-check"></use>
             </svg>
             <div class="recipe__quantity">${
-              ing.quantity ? new Fraction(ing.quantity).toString() : ""
+              ing.quantity ? new fracty(ing.quantity).toString() : ""
             }</div>
             <div class="recipe__description">
             <span class="recipe__unit">${ing.unit}</span>
