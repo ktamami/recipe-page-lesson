@@ -5,7 +5,7 @@ import View from "./View.js";
 // Parcel2での書き方はPath名の前にurl:を。
 import icons from "url:../../img/icons.svg";
 // iconsはparcelに作られた新しいpathになってる
-import fracty from "fracty";
+import Fraction from "fractional";
 
 // viewのパートには、Viewというビルドインのクラスがある。
 // 継承して使えるようにしたいので、viewでは基本クラス形態を取る
@@ -128,13 +128,14 @@ class RecipeView extends View {
   // ちなみに上のmap内では、map(ing=>#generateIngredientMarkup(ing))じゃなくて
   //map(#generateIngredientMarkup)でいいらしい。
   _generateIngredientMarkup(ing) {
+    const Fraction = require("fractional").Fraction;
     return `
         <li class="recipe__ingredient">
             <svg class="recipe__icon">
             <use href="${icons}#icon-check"></use>
             </svg>
             <div class="recipe__quantity">${
-              ing.quantity ? new fracty(ing.quantity).toString() : ""
+              ing.quantity ? new Fraction(ing.quantity).toString() : ""
             }</div>
             <div class="recipe__description">
             <span class="recipe__unit">${ing.unit}</span>
